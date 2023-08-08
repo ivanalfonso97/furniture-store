@@ -1,0 +1,21 @@
+.landing-page-background {
+  position: relative;
+  height: 100vh;
+  overflow: hidden; /* Hide any overflow from the pseudo-element */
+}
+
+.landing-page-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80");
+  background-size: 200%; 
+  background-position: calc(50% + 50px) 50px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  transform: scaleX(-1);
+  z-index: -1;
+}
