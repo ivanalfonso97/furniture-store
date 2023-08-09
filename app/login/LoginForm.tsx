@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import FormField from '../elements/FormField';
@@ -85,6 +85,7 @@ function LoginForm() {
       <Form className="flex flex-col gap-4 w-full">
         <FormField 
           fieldName="email"
+          fieldType="email"
           icon={<ChevronDownIcon className="h-5 w-5" />}
         />
         <FormField 
