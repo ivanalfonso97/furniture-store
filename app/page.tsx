@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import styles from './Landing.module.css'
+import styles from './landing/Landing.module.css'
 
 export default function Home() {
   const router = useRouter()
