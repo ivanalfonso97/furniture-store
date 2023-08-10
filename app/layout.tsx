@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { CartProvider } from './context/CartContext'
 import { poppins } from './styles/fonts'
 
 export const metadata: Metadata = {
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <CartProvider>
+        <body className={poppins.className}>{children}</body>
+      </CartProvider>
     </html>
   )
 }

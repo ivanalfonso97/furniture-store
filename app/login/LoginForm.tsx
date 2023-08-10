@@ -7,12 +7,12 @@ import * as Yup from 'yup';
 
 import FormField from '../elements/FormField';
 
-import { inter } from "../styles/fonts";
 import { 
   ChevronDownIcon,
   EyeIcon,
   EyeSlashIcon,
 } from "@heroicons/react/24/outline"
+import { inter } from "../styles/fonts";
 
 interface FormValues {
   email: string
