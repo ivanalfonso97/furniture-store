@@ -20,6 +20,12 @@
   .gray-square {
     @apply h-[30px] w-[30px] flex justify-center items-center text-2xl bg-secondary rounded-md;
   }
+
+  .item-image-small {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+  }
 }
 
 @layer utilities {

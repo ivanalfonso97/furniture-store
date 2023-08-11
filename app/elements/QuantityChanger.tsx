@@ -1,3 +1,5 @@
+import { inter } from "../styles/fonts";
+
 type Props = {
   quantity: number;
   setQuantity: (quantity: number) => void;
@@ -20,7 +22,7 @@ function QuantityChanger({ quantity, setQuantity }: Props) {
         onClick={subtractQuantity}
         className="h-[30px] w-[30px] flex justify-center items-center text-2xl bg-secondary rounded-md"
       >-</button>
-      <p>{quantity.toString().padStart(2, "0")}</p>
+      <p className={inter.className}>{quantity.toString().padStart(2, "0")}</p>
       <button
         onClick={addQuantity}
         className="h-[30px] w-[30px] flex justify-center items-center text-2xl bg-secondary rounded-md"

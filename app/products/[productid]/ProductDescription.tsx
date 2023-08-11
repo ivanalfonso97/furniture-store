@@ -25,9 +25,7 @@ function ProductDescription({ product }: Props) {
     addToFavorites, 
     removeFromFavorites 
   } = useCart()
-  console.log(favoriteItems)
-  console.log(cartItems)
-  const isFavorite = favoriteItems.some((favoriteItem: any) => favoriteItem.product_id === product?.product_id);
+  const isFavorite = favoriteItems.some((favoriteItem: Item) => favoriteItem.product_id === product?.product_id);
 
   return (
     <div className="flex flex-col gap-2 mt-6 px-5">
