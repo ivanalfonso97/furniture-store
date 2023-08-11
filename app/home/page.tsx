@@ -2,7 +2,7 @@ import Header from "../layout/header/Header"
 import ItemList from "./ItemList"
 import Navbar from "../layout/navbar/Navbar"
 
-import getItems from "./getItems"
+import getItems from "../utils/getItems"
 
 async function Home() {
   const items = await getItems()
