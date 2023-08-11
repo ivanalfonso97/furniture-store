@@ -7,10 +7,10 @@ import Filter from "../layout/filter/Filter"
 import { useCart } from "../context/CartContext"
 
 import { 
-  HeartIcon,
+  ShoppingBagIcon,
 } from "@heroicons/react/24/outline"
 import { 
-  HeartIcon as HeartIconSolid,
+  ShoppingBagIcon as ShoppingBagIconSolid,
 } from "@heroicons/react/24/solid"
 import Link from "next/link"
 
@@ -20,7 +20,7 @@ type Props = {
 
 function ItemList({ items }: Props) {
   const [filter, setFilter] = useState("popular")
-  const { favoriteItems, addToFavorites, deleteFromFavorites } = useCart()
+  const { cartItems, addToCart, removeFromCart } = useCart()
 
   const itemListings = items
     .filter((item) => {
@@ -38,32 +38,31 @@ function ItemList({ items }: Props) {
       }
     })
     .map((item) => {
-      const isFavorite = favoriteItems.some((favoriteItem: any) => favoriteItem.product_id === item?.product_id);
-      
+      const isInCart = cartItems.some((cartItem: any) => cartItem.product_id === item?.product_id);
+
       return (
         <div key={item?.product_id} >
-          <Link href={`/products/${item?.product_id}`}>
-            <div className="relative aspect-[3/4] rounded-[10px]">
+          <div className="relative aspect-[3/4] rounded-[10px]">
+            <Link href={`/products/${item?.product_id}`}>
               <Image 
                 src={item?.main_image}
                 fill={true}
                 style={{objectFit: "contain"}}
                 alt={item?.name}
               />
-              {isFavorite ?
-                <HeartIconSolid
-                  className="absolute bottom-2 right-2 w-6 h-6"
-                  onClick={() => {deleteFromFavorites(item)}}
-                /> :
-                <HeartIcon 
-                  className="absolute bottom-2 right-2 w-6 h-6"
-                  onClick={() => {addToFavorites(item)}}
-                />
-              }
+            </Link>
+            <div
+              className="gray-square absolute bottom-2 right-2"
+              onClick={() => { isInCart ? removeFromCart(item) : addToCart(item)}}
+            >
+              {isInCart ? <ShoppingBagIconSolid className="w-5 h-5" /> : <ShoppingBagIcon className="w-5 h-5" />}
             </div>
+          </div>
+          <Link href={`/products/${item?.product_id}`}>
             <p className="text-sm text-sub mt-3">{item?.name}</p>
             <p className="font-bold">$ {item?.price.toFixed(2)}</p>
           </Link>
+
         </div>
       )
     })

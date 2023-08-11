@@ -16,6 +16,10 @@
   .form-field {
     @apply p-2.5 w-full h-[66px] rounded border border-secondary 
   }
+
+  .gray-square {
+    @apply h-[30px] w-[30px] flex justify-center items-center text-2xl bg-secondary rounded-md;
+  }
 }
 
 @layer utilities {
