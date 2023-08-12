@@ -32,7 +32,7 @@ function Checkout() {
   }
 
   return (
-    <div className="fixed bottom-14 px-5 w-full">
+    <div className="fixed bottom-14 px-5 pt-5 w-full bg-white">
       {hasDiscount ?
         <div className="border-b border-secondary pb-4" >
           <div className="flex justify-between w-full">
