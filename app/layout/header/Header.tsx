@@ -22,7 +22,7 @@ function Header() {
       <Link href="/cart">
         <ShoppingCartIcon className="w-6 h-6"/>
       </Link>
-      {itemCount > 0 && <div className="fixed top-10 right-1 -z-10 flex justify-center items-center w-6 h-6 text-xs bg-secondary rounded-full">{itemCount}</div>}
+      {itemCount > 0 && <div className="absolute -top-2 -right-3 -z-10 flex justify-center items-center w-6 h-6 text-xs bg-secondary rounded-full">{itemCount}</div>}
     </div>
   )
 }
