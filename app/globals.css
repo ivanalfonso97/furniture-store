@@ -4,7 +4,7 @@
 
 @layer components {
   .button {
-    @apply bg-main rounded text-white w-full py-4 text-base disabled:bg-disable
+    @apply bg-main flex justify-center items-center rounded-lg text-white w-full py-4 text-base disabled:bg-disable
   }
 
   .card {
