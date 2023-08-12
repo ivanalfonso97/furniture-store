@@ -12,8 +12,9 @@ type Props = {
 }
 
 function Checkout() {
-  const { cartItems } = useCart()
+  const { cartItems, removeFromCart } = useCart()
   const [discount, setDiscount] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const hasDiscount = discount > 0
   const subtotal = cartItems.reduce((acc: number, item: Item) => {
@@ -21,6 +22,14 @@ function Checkout() {
     return acc + (item.price * quantity)
   }, 0)
   const total = hasDiscount ? subtotal * (1 - discount) : subtotal
+
+  function emptyCart() {
+    setLoading(true)
+    cartItems.forEach((item: Item) => {
+      removeFromCart(item)
+    })
+    setLoading(false)
+  }
 
   return (
     <div className="fixed bottom-14 px-5 w-full">
@@ -44,7 +53,13 @@ function Checkout() {
         <p className={`${inter.className} text-xl font-bold`}>$ {total.toFixed(2)}</p>
       </div>
       <Link href="/complete">
-        <button className="button">Check out</button>
+        <button 
+          className="button" 
+          onClick={emptyCart}
+          disabled={loading}
+        >
+          Check out
+        </button>
       </Link>
     </div>
   )
