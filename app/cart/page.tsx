@@ -75,7 +75,7 @@ function Favorites() {
         </Link>
         <p className="font-bold place-self-center ">My cart</p>
       </div>
-      <div className="w-full max-h-[320px] overflow-scroll mb-6">
+      <div className="w-full overflow-scroll mb-6">
         {cartList}
       </div>
       <Checkout />

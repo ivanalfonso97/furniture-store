@@ -61,7 +61,7 @@ function LoginForm() {
           setTimeout(() => {
             setDisableButton(false)
             setError(null)
-          }, 5000)
+          }, 60000)
         }
 
         return { 

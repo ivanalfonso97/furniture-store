@@ -68,10 +68,17 @@ function Favorites() {
   return (
     <div className="flex flex-col items-center px-5 w-full">
       <p className="font-bold mt-14 mb-6">Favorites</p>
-      <div className="w-full max-h-[376px] overflow-scroll mb-6">
+      <div className="w-full overflow-scroll mb-6">
         {favortiesList}
       </div>
-      {!isFavoritesEmpty && <button className="button" onClick={addAllToCart}>Add all to cart</button>}
+      {!isFavoritesEmpty && 
+        <button 
+          style={{ width: 'calc(100% - 2.5rem)' }}
+          className="button fixed bottom-[120px] z-10 mx-5" 
+          onClick={addAllToCart}
+        >
+          Add all to cart
+        </button>}
       <Navbar />
     </div>
   )
