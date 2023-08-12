@@ -6,6 +6,7 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline"
 import { inter } from "../../styles/fonts";
+import Link from "next/link";
 
 function Header() {
   const { cartItems } = useCart()
@@ -18,7 +19,9 @@ function Header() {
         <p className="text-sm leading-none uppercase">Make home</p>
         <p className="text-lg font-bold leading-none uppercase">Beautiful</p>
       </div>
-      <ShoppingCartIcon className="w-6 h-6"/>
+      <Link href="/cart">
+        <ShoppingCartIcon className="w-6 h-6"/>
+      </Link>
       {itemCount > 0 && <div className="fixed top-10 right-1 -z-10 flex justify-center items-center w-6 h-6 text-xs bg-secondary rounded-full">{itemCount}</div>}
     </div>
   )

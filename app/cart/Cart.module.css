@@ -1,0 +1,7 @@
+.discountCode {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 0px 2px 20px 0px rgba(138, 149, 158, 0.12);
+}

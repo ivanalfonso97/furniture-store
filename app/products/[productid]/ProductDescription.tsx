@@ -27,6 +27,16 @@ function ProductDescription({ product }: Props) {
   } = useCart()
   const isFavorite = favoriteItems.some((favoriteItem: Item) => favoriteItem.product_id === product?.product_id);
 
+  function addQuantity(quantity: number) {
+    setQuantity(quantity + 1)
+  }
+
+  function subtractQuantity(quantity: number) {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  }
+
   return (
     <div className="flex flex-col gap-2 mt-6 px-5">
       <h4 className="text-2xl">{product?.name}</h4>
@@ -34,7 +44,8 @@ function ProductDescription({ product }: Props) {
         <p className="title">$ {product?.price.toFixed(2)}</p>
         <QuantityChanger 
           quantity={quantity}
-          setQuantity={setQuantity}
+          addQuantity={addQuantity}
+          subtractQuantity={subtractQuantity}
         />
       </div>
       <div className="flex items-center">

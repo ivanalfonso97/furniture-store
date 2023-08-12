@@ -8,7 +8,8 @@ type Props = {
 
 type CartContextType = {
   cartItems: Item[];
-  addToCart: (item: Item) => void;
+  addToCart: (item: Item, quantity: number) => void;
+  updateQuantity: (item: Item, quantity: number) => void;
   removeFromCart: (item: Item) => void;
   favoriteItems: Item[];
   addToFavorites: (item: Item) => void;
@@ -27,11 +28,16 @@ export function CartProvider({ children }: Props) {
       setCartItems((prevItems) => [...prevItems, { ...item, quantity_ordered: quantity }]);
     // If item is in the cart but has a different quantity
     } else if (cartItems.some((cartItem) => cartItem.product_id === item.product_id && cartItem.quantity_ordered !== quantity)) {
-      setCartItems((prevCartItems) => [
-        ...prevCartItems.filter((cartItem) => cartItem.product_id !== item.product_id),
-        { ...item, quantity_ordered: quantity },
-      ]);
+      updateQuantity(item, quantity);
     }
+  };
+
+  function updateQuantity(item: Item, quantity: number) {
+    const indexToUpdate = cartItems.findIndex(cartItem => cartItem.product_id === item.product_id);
+    setCartItems((prevCartItems) => {
+      prevCartItems[indexToUpdate].quantity_ordered = quantity;
+      return [...prevCartItems];
+    });
   };
 
   function removeFromCart(item: Item) {
@@ -56,6 +62,7 @@ export function CartProvider({ children }: Props) {
     <CartContext.Provider value={{
       cartItems,
       addToCart,
+      updateQuantity,
       removeFromCart,
       favoriteItems,
       addToFavorites,
